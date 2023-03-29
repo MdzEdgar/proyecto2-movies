@@ -38,21 +38,41 @@ const createMovie = async (movieObj) => {
     id: movieId++,
     "title": movieObj.title || 'Untitled',
     "description": movieObj.description || null,
-    "year": movieObj.year || 1800,
+    "year": movieObj.year || 1980,
     "director": movieObj.director || 'Anonymous'
   }
   moviesDB.push(newMovie)
   return newMovie
 }
 
-const removeMovie = async (movieId) => {
-  let removed = false
-    for (let i =  0; i < moviesDB.length; i++) {
+const updateMovie = async (movieId, movieObj) => {
+  const updatedMovie = {
+    "id": movieId,
+    "title": movieObj.title || 'Untitled',
+    "description": movieObj.description || null,
+    "year": movieObj.year || 1980,
+    "director": movieObj.director || 'Anonymous'
+  }
+
+  for (let i =  0; i < moviesDB.length; i++) {
     if(moviesDB[i].id === movieId){
-      moviesDB.splice(i, 1)
-      removed = true
+      moviesDB.splice(i, 1, updatedMovie)
     }
   }
+
+  return moviesDB
+}
+
+const removeMovie = async (movieId) => {
+  let removed = false
+
+    for (let i =  0; i < moviesDB.length; i++) {
+      if(moviesDB[i].id === movieId){
+        moviesDB.splice(i, 1)
+        removed = true
+      }
+    }
+
   const data = {removed, moviesDB}
   
   return data
@@ -62,5 +82,6 @@ module.exports = {
   findAllMovies,
   findMovieById,
   createMovie,
+  updateMovie,
   removeMovie
 }

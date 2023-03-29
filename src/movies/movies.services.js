@@ -35,6 +35,18 @@ const postNewMovie = (req, res) => {
     })
 }
 
+const putMovie = (req, res) => {
+  const id = Number(req.params.id)
+  const movieObj = req.body
+  moviesControllers.updateMovie(id, movieObj)
+    .then(data => {
+      res.status(200).json(data)
+    })
+    .catch(err => {
+      res.status(400).json({message: err})
+    })
+}
+
 const deleteMovie = (req, res) => {
   const id = Number(req.params.id)
   moviesControllers.removeMovie(id)
@@ -53,5 +65,6 @@ module.exports = {
   getAllMovies,
   getMovieById,
   postNewMovie,
+  putMovie,
   deleteMovie
 }
