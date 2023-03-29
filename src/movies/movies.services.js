@@ -35,8 +35,23 @@ const postNewMovie = (req, res) => {
     })
 }
 
+const deleteMovie = (req, res) => {
+  const id = Number(req.params.id)
+  moviesControllers.removeMovie(id)
+    .then((data) => {
+      /*if(!data){
+        return res.status(404).json({message: 'Movie not found'})
+      }*/
+      res.status(200).json(data)
+    })
+    .catch(err => {
+      res.status(400).json({message: err})
+    })
+}
+
 module.exports = {
   getAllMovies,
   getMovieById,
-  postNewMovie
+  postNewMovie,
+  deleteMovie
 }

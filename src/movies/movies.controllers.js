@@ -45,8 +45,18 @@ const createMovie = async (movieObj) => {
   return newMovie
 }
 
+const removeMovie = async (movieId) => {
+    for (let i =  0; i < moviesDB.length; i++) {
+    if(moviesDB[i].id === movieId){
+      moviesDB.splice(i, 1)
+    }
+  }
+  return moviesDB
+}
+
 module.exports = {
   findAllMovies,
   findMovieById,
-  createMovie
+  createMovie,
+  removeMovie
 }

@@ -6,5 +6,6 @@ router.get('/movies', moviesServices.getAllMovies)
 router.post('/movies', moviesServices.postNewMovie)
 
 router.get('/movies/:id/', moviesServices.getMovieById)
+router.delete('/movies/:id', moviesServices.deleteMovie)
 
 module.exports = router
