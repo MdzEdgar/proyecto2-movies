@@ -42,7 +42,7 @@ const deleteMovie = (req, res) => {
       if(!data.removed){
         return res.status(404).json({message: "Movie not found"})
       }
-      res.status(200).json({message: 'Movie deleted', data: data.data})
+      res.status(200).json({message: 'Movie deleted', data: data.moviesDB})
     })
     .catch(err => {
       res.status(400).json({message: err})
