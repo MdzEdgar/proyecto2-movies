@@ -12,3 +12,9 @@ npm run test
 
 
 > Tu calificacion de este entregable dependera de la cantidad de tests que pases
+
+<br>
+
+
+## Tests
+![Tests passed](tests.gif)
